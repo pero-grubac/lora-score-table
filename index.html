@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="bs">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lora Score Table</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🃏</text></svg>">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="paper">
+
+        <h1 class="title">🃏 Lora</h1>
+        <p class="subtitle">scorecard — manje bodova, bolje</p>
+
+        <!-- ═══════ SETUP ═══════ -->
+        <div id="setup-view">
+            <p class="section-label">Igrači</p>
+            <div class="players-grid">
+                <div>
+                    <p class="field-label">Igrač 1</p>
+                    <input type="text" id="p1" placeholder="Ime..." maxlength="16" />
+                </div>
+                <div>
+                    <p class="field-label">Igrač 2</p>
+                    <input type="text" id="p2" placeholder="Ime..." maxlength="16" />
+                </div>
+                <div>
+                    <p class="field-label">Igrač 3</p>
+                    <input type="text" id="p3" placeholder="Ime..." maxlength="16" />
+                </div>
+                <div>
+                    <p class="field-label">Igrač 4</p>
+                    <input type="text" id="p4" placeholder="Ime..." maxlength="16" />
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="startGame()">Počni igru →</button>
+            <p id="setup-error" class="error-msg"></p>
+        </div>
+
+        <!-- ═══════ GAME ═══════ -->
+        <div id="game-view" class="hidden">
+
+            <p class="hint-text">Klikni na prazno polje u svom redu da odabereš igru.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead id="score-thead"></thead>
+                    <tbody id="score-tbody"></tbody>
+                </table>
+            </div>
+
+            <div id="round-history"></div>
+
+            <div style="text-align:right;">
+                <button class="reset-btn" onclick="resetGame()">↺ Nova igra</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
