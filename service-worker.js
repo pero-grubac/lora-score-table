@@ -1,4 +1,4 @@
-const CACHE_NAME = "lora-v2";
+const CACHE_NAME = "lora-v3";
 
 const FILES_TO_CACHE = [
   "./",
@@ -16,16 +16,28 @@ const FILES_TO_CACHE = [
   "./fonts/source-sans-3-v19-latin-700.woff2",
 ];
 
-// Install — cache all files
+const isLocal =
+  self.location.hostname === "localhost" ||
+  self.location.hostname === "127.0.0.1";
+
+// Install — skip caching on localhost
 self.addEventListener("install", (event) => {
+  if (isLocal) {
+    self.skipWaiting();
+    return;
+  }
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE)),
   );
   self.skipWaiting();
 });
 
-// Activate — delete old caches
+// Activate — delete old caches (skip on localhost)
 self.addEventListener("activate", (event) => {
+  if (isLocal) {
+    self.clients.claim();
+    return;
+  }
   event.waitUntil(
     caches
       .keys()
@@ -38,8 +50,9 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Fetch — cache first, fall back to network
+// Fetch — always network on localhost, cache-first on production
 self.addEventListener("fetch", (event) => {
+  if (isLocal) return;
   event.respondWith(
     caches.match(event.request).then((cached) => {
       return (

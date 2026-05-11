@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="manifest" href="manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lora Score Table</title>
     <link rel="icon"
@@ -64,7 +65,26 @@
 
     </div>
 
+    <!-- ═══════ RESET MODAL ═══════ -->
+    <div id="reset-modal" class="modal-overlay hidden" onclick="cancelReset()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <p class="modal-title">Nova igra?</p>
+            <p class="modal-body">Svi bodovi i runde bit će obrisani. Ova akcija se ne može poništiti.</p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost-modal" onclick="cancelReset()">Odustani</button>
+                <button class="btn btn-danger" onclick="confirmReset()">Resetuj</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("./service-worker.js")
+                .then(() => console.log("SW registrovan"))
+                .catch(e => console.warn("SW greška:", e));
+        }
+    </script>
 </body>
 
 </html>
