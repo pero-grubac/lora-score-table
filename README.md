@@ -16,7 +16,7 @@
 
 ## 📌 Project Overview
 
-**Lora Score Table** is a scorecard web app for the Bosnian card game Lora. Tracks scores across 7 game types with turn-based game selection, inline score entry, and a per-round history table. Runs entirely in the browser — no backend, no dependencies, no build step. Works offline as a PWA.
+**Lora Score Table** is a scorecard web app for the card game Lora. Tracks scores across 7 game types with turn-based game selection, inline score entry, and a per-round history table. Runs entirely in the browser — no backend, no dependencies, no build step. Works offline as a PWA.
 
 ---
 
