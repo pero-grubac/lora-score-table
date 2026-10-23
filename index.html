@@ -39,14 +39,25 @@
                     <input type="text" id="p4" placeholder="Ime..." maxlength="16" />
                 </div>
             </div>
+
+            <details class="rules-panel">
+                <summary>Pravila bodovanja</summary>
+                <p class="rules-note">Pravila se razlikuju od stola do stola. Upiši zbir koji bodovi sve četvorice
+                    moraju dati u svakoj igri (Plus je negativan), ili isključi provjeru.</p>
+                <div id="setup-rules" class="rules-grid"></div>
+                <button class="reset-btn rules-reset" onclick="resetRules('setup')">Vrati zadana pravila</button>
+            </details>
+
             <button class="btn btn-primary" onclick="startGame()">Počni igru →</button>
             <p id="setup-error" class="error-msg"></p>
+
+            <div id="past-games"></div>
         </div>
 
         <!-- ═══════ GAME ═══════ -->
         <div id="game-view" class="hidden">
 
-            <p class="hint-text">Klikni na prazno polje u svom redu da odabereš igru.</p>
+            <p class="hint-text" id="hint-text">Klikni na prazno polje u svom redu da odabereš igru.</p>
 
             <div class="table-wrap">
                 <table>
@@ -56,6 +67,13 @@
             </div>
 
             <div id="round-history"></div>
+
+            <details class="rules-panel">
+                <summary>Pravila bodovanja</summary>
+                <p class="rules-note">Izmjene važe za runde koje tek slijede.</p>
+                <div id="game-rules" class="rules-grid"></div>
+                <button class="reset-btn rules-reset" onclick="resetRules('game')">Vrati zadana pravila</button>
+            </details>
 
             <div style="text-align:right;">
                 <button class="reset-btn" onclick="resetGame()">↺ Nova igra</button>
@@ -73,6 +91,18 @@
             <div class="modal-actions">
                 <button class="btn btn-ghost-modal" onclick="cancelReset()">Odustani</button>
                 <button class="btn btn-danger" onclick="confirmReset()">Resetuj</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ CLEAR HISTORY MODAL ═══════ -->
+    <div id="history-modal" class="modal-overlay hidden" onclick="cancelClearHistory()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <p class="modal-title">Obrisati istoriju?</p>
+            <p class="modal-body">Sve sačuvane igre i statistika bit će obrisani. Ova akcija se ne može poništiti.</p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost-modal" onclick="cancelClearHistory()">Odustani</button>
+                <button class="btn btn-danger" onclick="confirmClearHistory()">Obriši</button>
             </div>
         </div>
     </div>
