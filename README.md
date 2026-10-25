@@ -15,7 +15,7 @@
 
 [![Live Demo](https://img.shields.io/badge/🃏_Live_Demo-lora--score--table-6B4422?style=for-the-badge)](https://pero-grubac.github.io/lora-score-table/)
 
-<img src="readme_assets/demo.gif" alt="Lora Score Table demo: entering four players, the scoring rules panel, a round rejected for the wrong total, the end of a game with sharing, and the game history with stats" width="820">
+<img src="readme_assets/demo.gif" alt="Lora Score Table demo: entering four players, picking Plus, a round rejected because it does not add up to -8 and then fixed, the last round of a game, the winner banner and sharing the result" width="820">
 
 </div>
 
